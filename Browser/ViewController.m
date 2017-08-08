@@ -150,14 +150,14 @@ typedef struct _Input
                                               message:@""
                                               preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *loadHomePageAction = [UIAlertAction
-                                             actionWithTitle:@"Go To Home Page"
+                                             actionWithTitle:@"Aller à l'accueil"
                                              style:UIAlertActionStyleDefault
                                              handler:^(UIAlertAction *action)
                                              {
                                                  [self loadHomePage];
                                              }];
         UIAlertAction *setHomePageAction = [UIAlertAction
-                                            actionWithTitle:@"Set Current Page As Home Page"
+                                            actionWithTitle:@"Définir comme page d'accueil"
                                             style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *action)
                                             {
@@ -169,37 +169,37 @@ typedef struct _Input
                                                 }
                                             }];
         UIAlertAction *showHintsAction = [UIAlertAction
-                                          actionWithTitle:@"Usage Guide"
+                                          actionWithTitle:@"Aide"
                                           style:UIAlertActionStyleDefault
                                           handler:^(UIAlertAction *action)
                                           {
                                               [self showHintsAlert];
                                           }];
         UIAlertAction *cancelAction = [UIAlertAction
-                                       actionWithTitle:@"Cancel"
+                                       actionWithTitle:@"Annuler"
                                        style:UIAlertActionStyleCancel
                                        handler:^(UIAlertAction *action)
                                        {
                                        }];
         UIAlertAction *viewFavoritesAction = [UIAlertAction
-                                              actionWithTitle:@"Favorites"
+                                              actionWithTitle:@"Favoris"
                                               style:UIAlertActionStyleDefault
                                               handler:^(UIAlertAction *action)
                                               {
                                                   NSArray *indexableArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"FAVORITES"];
                                                   UIAlertController *historyAlertController = [UIAlertController
-                                                                                               alertControllerWithTitle:@"Favorites"
+                                                                                               alertControllerWithTitle:@"Favoris"
                                                                                                message:@""
                                                                                                preferredStyle:UIAlertControllerStyleAlert];
                                                   UIAlertAction *editFavoritesAction = [UIAlertAction
-                                                                                        actionWithTitle:@"Delete a Favorite"
+                                                                                        actionWithTitle:@"Supprimer un favori"
                                                                                         style:UIAlertActionStyleDestructive
                                                                                         handler:^(UIAlertAction *action)
                                                                                         {
                                                                                             NSArray *editingIndexableArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"FAVORITES"];
                                                                                             UIAlertController *editHistoryAlertController = [UIAlertController
-                                                                                                                                             alertControllerWithTitle:@"Delete a Favorite"
-                                                                                                                                             message:@"Select a Favorite to Delete"
+                                                                                                                                             alertControllerWithTitle:@"Supprimer un favori"
+                                                                                                                                             message:@"Sélectionnez le favori à supprimer"
                                                                                                                                              preferredStyle:UIAlertControllerStyleAlert];
                                                                                             if (editingIndexableArray != nil) {
                                                                                                 for (int i = 0; i < [editingIndexableArray count]; i++) {
@@ -229,21 +229,21 @@ typedef struct _Input
                                                                                             
                                                                                         }];
                                                   UIAlertAction *addToFavoritesAction = [UIAlertAction
-                                                                                         actionWithTitle:@"Add Current Page to Favorites"
+                                                                                         actionWithTitle:@"Ajouter aux favoris"
                                                                                          style:UIAlertActionStyleDefault
                                                                                          handler:^(UIAlertAction *action)
                                                                                          {
                                                                                              NSString *theTitle=[_webview stringByEvaluatingJavaScriptFromString:@"document.title"];
                                                                                              NSString *currentURL = _webview.request.URL.absoluteString;
                                                                                              UIAlertController *favoritesAddToController = [UIAlertController
-                                                                                                                                            alertControllerWithTitle:@"Name New Favorite"
+                                                                                                                                            alertControllerWithTitle:@"Nommer le nouveau favori"
                                                                                                                                             message:currentURL
                                                                                                                                             preferredStyle:UIAlertControllerStyleAlert];
                                                                                              
                                                                                              [favoritesAddToController addTextFieldWithConfigurationHandler:^(UITextField *textField)
                                                                                               {
                                                                                                   textField.keyboardType = UIKeyboardTypeDefault;
-                                                                                                  textField.placeholder = @"Name New Favorite";
+                                                                                                  textField.placeholder = @"Nommer le nouveau favori";
                                                                                                   textField.text = theTitle;
                                                                                                   textField.textColor = [UIColor blackColor];
                                                                                                   textField.backgroundColor = [UIColor whiteColor];
@@ -255,7 +255,7 @@ typedef struct _Input
                                                                                               }];
                                                                                              
                                                                                              UIAlertAction *saveAction = [UIAlertAction
-                                                                                                                          actionWithTitle:@"Save"
+                                                                                                                          actionWithTitle:@"Enregistrer"
                                                                                                                           style:UIAlertActionStyleDestructive
                                                                                                                           handler:^(UIAlertAction *action)
                                                                                                                           {
@@ -311,17 +311,17 @@ typedef struct _Input
                                                   [self presentViewController:historyAlertController animated:YES completion:nil];
                                               }];
         UIAlertAction *viewHistoryAction = [UIAlertAction
-                                            actionWithTitle:@"History"
+                                            actionWithTitle:@"Historique"
                                             style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *action)
                                             {
                                                 NSArray *indexableArray = [[NSUserDefaults standardUserDefaults] arrayForKey:@"HISTORY"];
                                                 UIAlertController *historyAlertController = [UIAlertController
-                                                                                             alertControllerWithTitle:@"History"
+                                                                                             alertControllerWithTitle:@"Historique"
                                                                                              message:@""
                                                                                              preferredStyle:UIAlertControllerStyleAlert];
                                                 UIAlertAction *clearHistoryAction = [UIAlertAction
-                                                                                     actionWithTitle:@"Clear History"
+                                                                                     actionWithTitle:@"Vider l'historique"
                                                                                      style:UIAlertActionStyleDestructive
                                                                                      handler:^(UIAlertAction *action)
                                                                                      {
@@ -356,7 +356,7 @@ typedef struct _Input
                                                 [self presentViewController:historyAlertController animated:YES completion:nil];
                                             }];
         UIAlertAction *mobileModeAction = [UIAlertAction
-                                           actionWithTitle:@"Switch To Mobile Mode"
+                                           actionWithTitle:@"Passer en mode mobile"
                                            style:UIAlertActionStyleDefault
                                            handler:^(UIAlertAction *action)
                                            {
@@ -374,7 +374,7 @@ typedef struct _Input
                                                
                                            }];
         UIAlertAction *desktopModeAction = [UIAlertAction
-                                            actionWithTitle:@"Switch To Desktop Mode"
+                                            actionWithTitle:@"Passer en mode bureau"
                                             style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *action)
                                             {
@@ -391,7 +391,7 @@ typedef struct _Input
                                                 exit(0);
                                             }];
         UIAlertAction *clearCacheAction = [UIAlertAction
-                                           actionWithTitle:@"Clear Cache"
+                                           actionWithTitle:@"Vider le cache"
                                            style:UIAlertActionStyleDestructive
                                            handler:^(UIAlertAction *action)
                                            {
@@ -402,7 +402,7 @@ typedef struct _Input
                                                
                                            }];
         UIAlertAction *clearCookiesAction = [UIAlertAction
-                                             actionWithTitle:@"Clear Cookies"
+                                             actionWithTitle:@"Supprimer les cookies"
                                              style:UIAlertActionStyleDestructive
                                              handler:^(UIAlertAction *action)
                                              {
@@ -417,7 +417,7 @@ typedef struct _Input
                                              }];
         
         UIAlertAction *increaseFontSizeAction = [UIAlertAction
-                                             actionWithTitle:@"Increase Font Size"
+                                             actionWithTitle:@"Augmenter la taille de police"
                                              style:UIAlertActionStyleDefault
                                              handler:^(UIAlertAction *action)
                                              {
@@ -429,7 +429,7 @@ typedef struct _Input
                                              }];
         
         UIAlertAction *decreaseFontSizeAction = [UIAlertAction
-                                                 actionWithTitle:@"Decrease Font Size"
+                                                 actionWithTitle:@"Diminuer la taille de police"
                                                  style:UIAlertActionStyleDefault
                                                  handler:^(UIAlertAction *action)
                                                  {
@@ -441,7 +441,7 @@ typedef struct _Input
                                                  }];
         
         UIAlertAction *scalePageToFitAction = [UIAlertAction
-                                                 actionWithTitle:@"Scale Page to Fit"
+                                                 actionWithTitle:@"Adapter la page à l'écran"
                                                  style:UIAlertActionStyleDefault
                                                  handler:^(UIAlertAction *action)
                                                  {
@@ -498,14 +498,14 @@ typedef struct _Input
 -(void)requestURLorSearchInput
 {
     UIAlertController *alertController = [UIAlertController
-                                          alertControllerWithTitle:@"Enter URL or Search Terms"
+                                          alertControllerWithTitle:@"Saisir l'URL ou les termes à rechercher"
                                           message:@""
                                           preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
      {
          textField.keyboardType = UIKeyboardTypeURL;
-         textField.placeholder = @"Enter URL or Search Terms";
+         textField.placeholder = @"Saisir l'URL ou les termes à rechercher";
          textField.textColor = [UIColor blackColor];
          textField.backgroundColor = [UIColor whiteColor];
          [textField setReturnKeyType:UIReturnKeyDone];
@@ -516,7 +516,7 @@ typedef struct _Input
      }];
     
     UIAlertAction *goAction = [UIAlertAction
-                               actionWithTitle:@"Go To Website"
+                               actionWithTitle:@"Accéder au site internet"
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action)
                                {
@@ -554,7 +554,7 @@ typedef struct _Input
                                    
                                }];
     UIAlertAction *searchAction = [UIAlertAction
-                                   actionWithTitle:@"Search Google"
+                                   actionWithTitle:@"Rechercher sur Google"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action)
                                    {
@@ -575,7 +575,7 @@ typedef struct _Input
                                    }];
     
     UIAlertAction *reloadAction = [UIAlertAction
-                                   actionWithTitle:@"Reload Page"
+                                   actionWithTitle:@"Recharger la page"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action)
                                    {
@@ -584,7 +584,7 @@ typedef struct _Input
                                    }];
     
     UIAlertAction *cancelAction = [UIAlertAction
-                                   actionWithTitle:@"Cancel"
+                                   actionWithTitle:@"Annuler"
                                    style:UIAlertActionStyleCancel
                                    handler:^(UIAlertAction *action)
                                    {
@@ -616,12 +616,12 @@ typedef struct _Input
     [loadingSpinner stopAnimating];
     if (![[NSString stringWithFormat:@"%lid", (long)error.code] containsString:@"999"] && ![[NSString stringWithFormat:@"%lid", (long)error.code] containsString:@"204"]) {
         UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:@"Could Not Load Webpage"
+                                              alertControllerWithTitle:@"Impossible de charger la page"
                                               message:[error localizedDescription]
                                               preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *searchAction = [UIAlertAction
-                                       actionWithTitle:@"Google This Page"
+                                       actionWithTitle:@"Rechercher cette page sur Google"
                                        style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction *action)
                                        {
@@ -641,7 +641,7 @@ typedef struct _Input
                                            
                                        }];
         UIAlertAction *reloadAction = [UIAlertAction
-                                       actionWithTitle:@"Reload Page"
+                                       actionWithTitle:@"Recharger la page"
                                        style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction *action)
                                        {
@@ -649,14 +649,14 @@ typedef struct _Input
                                            [self.webview reload];
                                        }];
         UIAlertAction *newurlAction = [UIAlertAction
-                                       actionWithTitle:@"Enter a URL or Search"
+                                       actionWithTitle:@"Saisir une URL ou une recherche"
                                        style:UIAlertActionStyleDefault
                                        handler:^(UIAlertAction *action)
                                        {
                                            [self requestURLorSearchInput];
                                        }];
         UIAlertAction *cancelAction = [UIAlertAction
-                                       actionWithTitle:@"Dismiss"
+                                       actionWithTitle:@"OK"
                                        style:UIAlertActionStyleCancel
                                        handler:^(UIAlertAction *action)
                                        {
@@ -702,12 +702,12 @@ typedef struct _Input
 - (void)showHintsAlert
 {
     UIAlertController *alertController = [UIAlertController
-                                          alertControllerWithTitle:@"Usage Guide"
-                                          message:@"Double press the touch area to switch between cursor & scroll mode.\nPress the touch area while in cursor mode to click.\nPress the Menu button to navigate back.\nPress the Play/Pause button for a URL bar.\nDouble tap the Play/Pause button or Menu button for more options."
+                                          alertControllerWithTitle:@"Aide"
+                                          message:@"Effectuez un double clic pour passer du mode curseur au mode ascenseur.\nEffectuez un simple tap pour cliquer en mode curseur.\nAppuyez sur le bouton Menu pour revenir à la page précédente.\nAppuyez sur le bouton Lecture/Pause pour afficher la barre d'adresse.\nAppuyez deux fois sur le bouton Lecture/Pause  ou Menu pour plus d'options."
                                           preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *hideForeverAction = [UIAlertAction
-                                        actionWithTitle:@"Don't Show This Again"
+                                        actionWithTitle:@"Ne plus afficher"
                                         style:UIAlertActionStyleDestructive
                                         handler:^(UIAlertAction *action)
                                         {
@@ -715,7 +715,7 @@ typedef struct _Input
                                             [[NSUserDefaults standardUserDefaults] synchronize];
                                         }];
     UIAlertAction *showForeverAction = [UIAlertAction
-                                        actionWithTitle:@"Always Show On Launch"
+                                        actionWithTitle:@"Toujours afficher"
                                         style:UIAlertActionStyleDestructive
                                         handler:^(UIAlertAction *action)
                                         {
@@ -723,7 +723,7 @@ typedef struct _Input
                                             [[NSUserDefaults standardUserDefaults] synchronize];
                                         }];
     UIAlertAction *cancelAction = [UIAlertAction
-                                   actionWithTitle:@"Dismiss"
+                                   actionWithTitle:@"OK"
                                    style:UIAlertActionStyleCancel
                                    handler:^(UIAlertAction *action)
                                    {
@@ -851,12 +851,12 @@ typedef struct _Input
                         placeholder = [NSString stringWithFormat:@"%@ Input", fieldTitle];
                     }
                     else {
-                        placeholder = @"Text Input";
+                        placeholder = @"Saisir du texte";
                     }
                 }
                 NSString *testedFormResponse = [_webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.elementFromPoint(%i, %i).form.hasAttribute('onsubmit');", (int)point.x, (int)point.y]];
                 UIAlertController *alertController = [UIAlertController
-                                                      alertControllerWithTitle:@"Input Text"
+                                                      alertControllerWithTitle:@"Saisissez du texte"
                                                       message: [fieldTitle capitalizedString]
                                                       preferredStyle:UIAlertControllerStyleAlert];
                 
@@ -888,7 +888,7 @@ typedef struct _Input
                      
                  }];
                 UIAlertAction *inputAndSubmitAction = [UIAlertAction
-                                                       actionWithTitle:@"Submit"
+                                                       actionWithTitle:@"Envoyer"
                                                        style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction *action)
                                                        {
@@ -903,7 +903,7 @@ typedef struct _Input
                                                            [_webview stringByEvaluatingJavaScriptFromString:javaScript];
                                                        }];
                 UIAlertAction *inputAction = [UIAlertAction
-                                              actionWithTitle:@"Done"
+                                              actionWithTitle:@"OK"
                                               style:UIAlertActionStyleDefault
                                               handler:^(UIAlertAction *action)
                                               {
@@ -913,7 +913,7 @@ typedef struct _Input
                                                   [_webview stringByEvaluatingJavaScriptFromString:javaScript];
                                               }];
                 UIAlertAction *cancelAction = [UIAlertAction
-                                               actionWithTitle:@"Cancel"
+                                               actionWithTitle:@"Annuler"
                                                style:UIAlertActionStyleCancel
                                                handler:^(UIAlertAction *action)
                                                {
